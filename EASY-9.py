@@ -1,5 +1,18 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
+      if (x < 0): return False # Skip negative numbers
+      Target = x
+      ReverseNum = 0
+      while (x > 0): 
+        ReverseNum *= 10 # Push existing ReverseNum digits left
+        ReverseNum += (x % 10) # Add last digit of x to ReverseNum's (which is now 0 due to pushing)
+        x//=10 # Floor division x to remove last digit
+      return (Target == ReverseNum)
+    
+'''
+Before follow up: 
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
         if (x<0): return False # Ignore all negative values
         
         xStr = str(x)
@@ -14,3 +27,4 @@ class Solution:
         
         # print (FirstHalf, SecondHalf)
         return (FirstHalf == SecondHalf)
+'''    
